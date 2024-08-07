@@ -1,4 +1,4 @@
-import { FaRegStar, FaStar } from 'react-icons/fa6';
+import { FaStar } from 'react-icons/fa6';
 import { Product } from '../../models';
 import { ProductReview } from '../product-reviews/ProductReview';
 import './ProductItem.css';

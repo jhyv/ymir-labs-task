@@ -11,6 +11,7 @@ interface ProductReviewProps {
 export const ProductReview: React.FC<ProductReviewProps> = ({
     product
 }) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [reviews, setReviews] = useState(generateMockReviews());
 
     const stars = generateReview().toFixed(1);
