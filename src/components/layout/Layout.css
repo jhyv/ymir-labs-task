@@ -6,3 +6,9 @@ main {
 .page-content {
     padding: 16px;
 }
+
+@media (max-width: 800px) {
+    .page-content {
+        padding: 0;
+    }
+}

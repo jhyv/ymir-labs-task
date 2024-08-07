@@ -1,6 +1,5 @@
 .app-header {
     height: 55px;
-    width: 100%;
     padding: 16px 32px;
     display: flex;
     align-items: center;
@@ -13,9 +12,17 @@
     font-weight: bold;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
     .app-header {
         height: 45px;
         padding: 8px 16px;
+    }
+
+    .page-title {
+        font-size: 18px;
+        font-weight: bold;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
     }
 }

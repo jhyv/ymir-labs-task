@@ -10,6 +10,7 @@ interface ProductState {
 
 interface ProductActions {
     fetchProducts: (keywords?: string) => any;
+    getProduct: (id: number) => Product;
 }
 
 const initialState: ProductState = {
@@ -29,7 +30,7 @@ const storageOptions = {
 export const useProductStore = create<ProductState & ProductActions>()(
     persist(
         immer(
-            (set) => ({
+            (set, get) => ({
                 ...initialState,
                 fetchProducts: async (keywords?: string) => {
                     const response: any = await getProducts(keywords);
@@ -37,6 +38,9 @@ export const useProductStore = create<ProductState & ProductActions>()(
                     set({
                         products: response.data
                     });
+                },
+                getProduct: (id: number) => {
+                    return get().products.find((product) => product.id === id)!;
                 }
             })
         ),

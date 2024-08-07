@@ -1,4 +1,5 @@
-.product-item {
+/* PRODUCT ITEM */
+.product-item.item {
     height: 200px;
     width: 150px;
     border: 1px solid rgba(0, 0, 0, 0.3);
@@ -6,7 +7,7 @@
     border-radius: 5px;
 }
 
-.product-item .product-img {
+.product-item.item .product-img {
     height: 60%;
     width: 100%;
     overflow: hidden;
@@ -16,13 +17,13 @@
     background-color: #222;
 }
 
-.product-img img {
+.product-item.item .product-img img {
     object-fit: cover;
     height: 100%;
     width: 100%;
 }
 
-.product-title {
+.product-item.item .product-title {
     font-size: 12px;
     width: 100%;
     display: -webkit-box;
@@ -36,32 +37,114 @@
     color: #222;
 }
 
-.product-desc {
+.product-item.item .product-desc {
     padding: 8px;
 }
 
-.product-price {
+.product-item.item .product-price {
     font-weight: bold;
     font-size: 16px;
     margin-top: 10px;
 }
 
+
+/* PRODUCT DETAIL */
+.product-item.detail {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.product-item.detail .product-img {
+    height: 300px;
+    width: 300px;
+}
+
+.product-item.detail .product-img img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.product-item.detail .product-desc {
+    width: calc(100% - 320px);
+    height: 400px;
+}
+
+.product-item.detail .product-title {
+    font-size: 30px;
+    width: 100%;
+    text-decoration: none;
+    color: #222;
+}
+
+.product-item.detail .product-desc {
+    padding: 8px;
+}
+
+.product-item.detail .product-price {
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+
+/* RESPONSIVE DESIGN */
 @media (max-width: 700px) {
-    .product-item {
+    .product-item.item {
         width: 42%;
         height: 300px;
+    }
+
+    .product-item.detail {
+        flex-direction: column;
+        margin-top: 0;
+        overflow: hidden;
+    }
+
+    .product-item.detail .product-img {
+        height: 40vh;
+        width: 100%;
+    }
+
+    .product-item.detail .product-title {
+        font-size: 20px;
+        width: 100%;
+        font-weight: bold;
+        text-decoration: none;
+        color: #222;
+    }
+
+    .product-item.detail .product-body {
+        font-size: 14px;
+        font-weight: normal;
+        white-space: break-spaces;
+        margin: 10px auto;
+
+    }
+
+    .product-item.detail .product-desc {
+        padding: 16px 8px;
+        width: 100%;
+    }
+
+    .product-item.detail .product-price {
+        font-weight: bold;
+        font-size: 16px;
+        margin-top: 10px;
     }
 }
 
 @media (min-width: 900px) {
-    .product-item {
+    .product-item.item {
         width: 150px;
         height: 230px;
     }
 }
 
 @media (min-width: 1200px) {
-    .product-item {
+    .product-item.item {
         width: 200px;
         height: 300px;
     }

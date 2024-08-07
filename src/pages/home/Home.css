@@ -1,13 +1,23 @@
+.product-container.product-header {
+    display: block;
+    margin-bottom: 10px;
+}
+
 .product-container {
     width: 1200px;
     margin: 0 auto;
     height: auto;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 @media (max-width: 700px) {
+    .product-container.product-header {
+        padding: 16px;
+    }
+
     .product-container {
         width: 100%;
         margin: 0;

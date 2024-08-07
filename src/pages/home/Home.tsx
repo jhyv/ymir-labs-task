@@ -22,7 +22,10 @@ export const Home: React.FC<HomeProps> = () => {
 
     return (
         <Layout headerTitle='Products'>
-            <h3>{products.length} total products</h3>
+            <div className='product-container product-header'>
+                <h2>Product List</h2>
+                <h3>{products.length} total products</h3>
+            </div>
             <div className='product-container'>
                 {
                     products.length > 0 &&
