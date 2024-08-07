@@ -1,25 +1,45 @@
+import { StateStorage, createJSONStorage, persist } from "zustand/middleware";
 import { create } from "zustand";
 import { getProducts } from "../services";
+import { Product } from "../models";
+import { immer } from "zustand/middleware/immer";
 
 interface ProductState {
-    products: any[];
+    products: Product[];
 }
 
 interface ProductActions {
-    fetchProducts: () => any;
+    fetchProducts: (keywords?: string) => any;
 }
 
 const initialState: ProductState = {
     products: []
 }
 
+const persistStorage: StateStorage = localStorage;
 
-export const useProductStore = create<ProductState & ProductActions>((set) => ({
-    ...initialState,
-    fetchProducts: async () => {
-        const response: any = await getProducts();
-        set({
-            products: response.data
-        });
-    }
-}))
+const storageOptions = {
+    name: 'products.store',
+    storage: createJSONStorage(() => persistStorage),
+    partialize: (state: ProductState & ProductActions) => ({
+        products: state.products
+    })
+};
+
+export const useProductStore = create<ProductState & ProductActions>()(
+    persist(
+        immer(
+            (set) => ({
+                ...initialState,
+                fetchProducts: async (keywords?: string) => {
+                    const response: any = await getProducts(keywords);
+
+                    set({
+                        products: response.data
+                    });
+                }
+            })
+        ),
+        storageOptions
+    )
+);

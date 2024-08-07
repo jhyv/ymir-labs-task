@@ -1,6 +1,6 @@
 import axios from "axios";
 import { GET_PRODUCTS } from "../constants";
 
-export const getProducts = () => {
-    return axios.get(GET_PRODUCTS);
+export const getProducts = (keywords?: string) => {
+    return axios.get(`${GET_PRODUCTS}${keywords ? '?title=' + keywords : ''}`);
 }

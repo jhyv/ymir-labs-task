@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { Layout } from '../../components';
+import { Layout, ProductItem } from '../../components';
 import { useProductStore } from '../../store';
 import './Home.css';
+import { Product } from '../../models';
 
 interface HomeProps { }
 
@@ -21,16 +22,15 @@ export const Home: React.FC<HomeProps> = () => {
 
     return (
         <Layout headerTitle='Products'>
-            <h1>Home</h1>
-
-            {
-                products &&
-                products.map((product) => (
-                    <div>
-                        {product.title}
-                    </div>
-                ))
-            }
+            <h3>{products.length} total products</h3>
+            <div className='product-container'>
+                {
+                    products.length > 0 &&
+                    products.map((product: Product) => (
+                        <ProductItem product={product} key={product.id} />
+                    ))
+                }
+            </div>
         </Layout>
     );
 }
