@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
-import { Layout, ProductItem } from '../../components';
+import { useEffect, useState } from 'react';
+import { Layout, ProductItem, ProductSearch } from '../../components';
 import { useProductStore } from '../../store';
 import './Home.css';
 import { Product } from '../../models';
+import { useDebounce } from '../../utils';
 
 interface HomeProps { }
 
@@ -13,18 +14,28 @@ export const Home: React.FC<HomeProps> = () => {
     }) => ({
         fetchProducts,
         products
-    }))
+    }));
+    const [keywords, setKeywords] = useState('');
 
     useEffect(() => {
         fetchProducts();
     }, []);
 
+    const debounceValue = useDebounce(keywords, 2000);
+
+    useEffect(() => {
+        fetchProducts(keywords);
+    }, [debounceValue]);
 
     return (
         <Layout headerTitle='Products'>
             <div className='product-container product-header'>
                 <h2>Product List</h2>
-                <h3>{products.length} total products</h3>
+                <ProductSearch keyword={keywords} setKeyword={setKeywords} />
+                {
+                    products.length > 0 &&
+                    <h3>{products.length} total products</h3>
+                }
             </div>
             <div className='product-container'>
                 {

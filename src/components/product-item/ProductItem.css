@@ -127,6 +127,7 @@
     .product-item.detail .product-desc {
         padding: 16px 8px;
         width: 100%;
+        box-sizing: border-box;
     }
 
     .product-item.detail .product-price {
