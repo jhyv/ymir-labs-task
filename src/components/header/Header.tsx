@@ -26,6 +26,7 @@ export const Header: React.FC<HeaderProps> = ({
     const navigate = useNavigate();
     const location = useLocation();
     const canGoBack = location.key === 'default';
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [width, height] = useWindowSize();
 
     return (

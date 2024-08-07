@@ -19,12 +19,15 @@ export const Home: React.FC<HomeProps> = () => {
 
     useEffect(() => {
         fetchProducts();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const debounceValue = useDebounce(keywords, 2000);
 
     useEffect(() => {
-        fetchProducts(keywords);
+        if (keywords.length > 0)
+            fetchProducts(keywords);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [debounceValue]);
 
     return (
